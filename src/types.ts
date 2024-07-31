@@ -1,4 +1,4 @@
-import {ComponentClass, FC} from "react";
+import {ComponentClass, FC} from 'react';
 
 export type TComponent<P = {}> = FC<P> | ComponentClass<P>;
 
