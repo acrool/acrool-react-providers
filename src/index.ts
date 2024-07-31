@@ -1,3 +1,3 @@
-export {default, composedProviders} from './composedProviders';
-export * from './types';
+export {default} from './composedProviders';
+export * from './utils';
 

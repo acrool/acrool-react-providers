@@ -42,15 +42,15 @@ import composedProviders, {providerWithProps} from "@acrool/react-providers";
 
 const Providers = composeProviders(
     [
-        providerProps(ReduxProvider, {store}),
-        providerProps(Router, {history: history, basename: routePrefixPath}),
-        providerProps(ApolloProvider, {client: apolloClient}),
-        providerProps(ReactQueryClientProvider, {}),
-        providerProps(LanguageProvider, {}),
-        providerProps(AxiosClientProvider, {}),
-        providerProps(StyleSheetManager, {stylisPlugins: [rtlPlugin]}),
-        providerProps(GridThemeProvider, {gridTheme: gridConfig}),
-        providerProps(ThemeProvider, {theme: appTheme}),
+        providerWithProps(ReduxProvider, {store}),
+        providerWithProps(Router, {history: history, basename: routePrefixPath}),
+        providerWithProps(ApolloProvider, {client: apolloClient}),
+        providerWithProps(ReactQueryClientProvider, {}),
+        providerWithProps(LanguageProvider, {}),
+        providerWithProps(AxiosClientProvider, {}),
+        providerWithProps(StyleSheetManager, {stylisPlugins: [rtlPlugin]}),
+        providerWithProps(GridThemeProvider, {gridTheme: gridConfig}),
+        providerWithProps(ThemeProvider, {theme: appTheme}),
     ]
 )(App);
 

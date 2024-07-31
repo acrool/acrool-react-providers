@@ -1,13 +1,9 @@
 import {createElement, Fragment} from 'react';
 
-import {IComponentProps, TComponent} from './types';
+import {IProviderPropsObj, TComponent} from './types';
+import {checkIsProviderObj} from './utils';
 
 
-
-
-export const checkIsProvider = <T extends TComponent|IComponentProps>(provider: T): provider is Extract<T, IComponentProps> => {
-    return 'Comp' in provider;
-};
 
 
 /**
@@ -16,7 +12,7 @@ export const checkIsProvider = <T extends TComponent|IComponentProps>(provider: 
  * @param displayName 元件名稱
  */
 export const composedProviders = (
-    providers: IComponentProps<any>[],
+    providers: IProviderPropsObj<any>[],
     displayName = 'ComposedProviders',
 ) => {
     return (ChildComponent: TComponent) => {
@@ -25,8 +21,8 @@ export const composedProviders = (
         function Composed<P extends {}>(props: React.PropsWithChildren<P>) {
             return innerFirstProviders.reduce<React.ReactElement>(
                 (curr, provider) => {
-                    if(checkIsProvider(provider)){
-                        const {Comp, props} = provider as IComponentProps<P>;
+                    if(checkIsProviderObj(provider)){
+                        const {Comp, props} = provider as IProviderPropsObj<P>;
                         return createElement(Comp, props, curr);
                     }
                     return createElement(provider, null, curr);
