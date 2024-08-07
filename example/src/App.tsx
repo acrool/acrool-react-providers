@@ -1,4 +1,3 @@
-import {ProvidersPortal} from '@acrool/react-providers';
 
 import './App.css';
 import Example from './views/Example';
@@ -16,24 +15,6 @@ function App() {
                 <Banner/>
                 <Example/>
 
-                <ProvidersPortal
-                    renderButton={(args) => {
-                        return <Button
-                            className={args.className}
-                            children={args.children}
-                            color={args.color}
-                            onClick={args.onClick}
-                            isBlock
-                            size="md"
-                        />;
-                    }}
-                    renderTextField={(args) => {
-                        return <TextField
-                            {...args}
-                            isAutoFocus
-                        />;
-                    }}
-                />
 
             </div>
         </GridThemeProvider>
