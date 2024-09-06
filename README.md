@@ -40,21 +40,22 @@ then in your page
 ```tsx
 import composedProviders, {providerWithProps} from "@acrool/react-providers";
 
-const Providers = composeProviders(
-    [
-        providerWithProps(ReduxProvider, {store}),
-        providerWithProps(Router, {history: history, basename: routePrefixPath}),
-        providerWithProps(ApolloProvider, {client: apolloClient}),
-        providerWithProps(ReactQueryClientProvider, {}),
-        providerWithProps(LanguageProvider, {}),
-        providerWithProps(AxiosClientProvider, {}),
-        providerWithProps(StyleSheetManager, {stylisPlugins: [rtlPlugin]}),
-        providerWithProps(GridThemeProvider, {gridTheme: gridConfig}),
-        providerWithProps(ThemeProvider, {theme: appTheme}),
-    ]
-)(App);
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<Providers/>);
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    createElement(composedProviders(
+        [
+            providerWithProps(ReduxProvider, {store}),
+            providerWithProps(ApolloProvider, {client: apolloClient}),
+            providerWithProps(ReactQueryClientProvider, {}),
+            providerWithProps(ReactLocaleProvider, {}),
+            providerWithProps(Router, {history: history, basename: routePrefixPath}),
+            providerWithProps(AxiosClientProvider, {}),
+            providerWithProps(StyleSheetManager, {stylisPlugins: [rtlPlugin]}),
+            providerWithProps(GridThemeProvider, {gridTheme: gridConfig}),
+            providerWithProps(ThemeProvider, {theme: appTheme}),
+            providerWithProps(UIProvider, {}),
+        ]
+    )(App))
+);
 
 ```
 

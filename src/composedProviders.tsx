@@ -16,7 +16,7 @@ export const composedProviders = (
     displayName = 'ComposedProviders',
 ) => {
     return (ChildComponent: TComponent) => {
-        const innerFirstProviders = [...providers, ChildComponent].slice().reverse();
+        const innerFirstProviders = [...providers, ChildComponent].reverse();
 
         function Composed<P extends {}>(props: React.PropsWithChildren<P>) {
             return innerFirstProviders.reduce<React.ReactElement>(
