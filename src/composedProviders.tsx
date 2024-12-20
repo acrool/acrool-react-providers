@@ -11,11 +11,13 @@ import {checkIsProviderObj} from './utils';
  * @param providers 提供者們
  * @param displayName 元件名稱
  */
-export const composedProviders = (
-    providers: IProviderPropsObj<any>[],
-    displayName = 'ComposedProviders',
-) => {
-    return (ChildComponent: TComponent) => {
+export const composedProviders = <
+    K = any, // 子元件的 props
+>(
+        providers: IProviderPropsObj<any>[],
+        displayName = 'ComposedProviders',
+    ) => {
+    return (ChildComponent: TComponent<K>) => {
         const innerFirstProviders = [...providers, ChildComponent].reverse();
 
         function Composed<P extends {}>(props: React.PropsWithChildren<P>) {
@@ -25,7 +27,7 @@ export const composedProviders = (
                         const {Comp, props} = provider as IProviderPropsObj<P>;
                         return createElement(Comp, props, curr);
                     }
-                    return createElement(provider, null, curr);
+                    return createElement(provider, props as any, curr);
                 }, createElement(Fragment, null, props.children));
         }
         Composed.displayName = displayName;

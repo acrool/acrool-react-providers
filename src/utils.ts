@@ -5,7 +5,7 @@ import {IProviderPropsObj, TComponent, TOmitChild} from './types';
  * 檢查是否為 ProviderObj
  * @param provider
  */
-export const checkIsProviderObj = <T extends TComponent|IProviderPropsObj>(provider: T): provider is Extract<T, IProviderPropsObj> => {
+export const checkIsProviderObj = <T extends TComponent<any>|IProviderPropsObj>(provider: T): provider is Extract<T, IProviderPropsObj> => {
     return 'Comp' in provider;
 };
 
