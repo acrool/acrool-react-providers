@@ -1,6 +1,6 @@
 import {ComponentClass, FC} from 'react';
 
-export type TComponent<P = {}> = FC<P> | ComponentClass<P>;
+export type TComponent<P = {}> = FC<React.PropsWithChildren<P>> | ComponentClass<React.PropsWithChildren<P>>;
 
 export interface IProviderPropsObj<T = {}> {
     Comp: TComponent<T>,
