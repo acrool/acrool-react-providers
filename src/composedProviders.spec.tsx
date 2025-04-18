@@ -46,7 +46,7 @@ describe('composedProviders', () => {
     });
 
     it('應該正確渲染所有 Providers', () => {
-        const WithProvider = composedProviders(providers)(TaskModal);
+        const WithProvider = composedProviders<ITaskModalProps>(providers)(TaskModal);
 
         render(<WithProvider taskId="12345" />);
 
