@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-providers",
-  "version": "0.0.4-alpha.1",
+  "version": "1.0.0",
   "description": "This is a compose providers avoid nesting for React Function",
   "keywords": [
     "acrool",
