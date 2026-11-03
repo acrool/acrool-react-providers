@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3-alpha.0](https://github.com/acrool/acrool-react-providers/compare/v1.0.2...v1.0.3-alpha.0) (2026-11-03)
+
+
+### Bug Fixes
+
+* composedProviders 包裝後的元件保留子元件 props 型別 ([107f2a5](https://github.com/acrool/acrool-react-providers/commit/107f2a5351a5269fd991b31551a9c4398cd61c68))
+
 ### [1.0.2](https://github.com/acrool/acrool-react-providers/compare/v1.0.1...v1.0.2) (2025-05-12)
 
 ### [1.0.1](https://github.com/acrool/acrool-react-providers/compare/v1.0.0...v1.0.1) (2025-04-26)
