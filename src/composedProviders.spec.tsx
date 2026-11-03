@@ -46,7 +46,7 @@ describe('composedProviders', () => {
     });
 
     it('應該正確渲染所有 Providers', () => {
-        const WithProvider = composedProviders<ITaskModalProps>(providers)(TaskModal);
+        const WithProvider = composedProviders(providers)(TaskModal);
 
         render(<WithProvider taskId="12345" />);
 
@@ -83,5 +83,20 @@ describe('composedProviders', () => {
         const simple = screen.getByTestId('simple');
         expect(simple).toBeInTheDocument();
         expect(simple).toHaveTextContent('Hello, World!');
+    });
+
+    it('包裝後的元件應保留子元件的 props 型別', () => {
+        const WithProvider = composedProviders(providers)(TaskModal);
+
+        // 型別檢查由 tsc（yarn build）負責，jest 經 swc 轉譯不檢查型別；函式僅宣告不執行
+        const assertTypes = () => {
+            // @ts-expect-error 缺少必填的 taskId
+            <WithProvider />;
+            // @ts-expect-error taskId 型別錯誤
+            <WithProvider taskId={123} />;
+            // @ts-expect-error 不存在的 prop
+            <WithProvider taskId="1" unknownProp />;
+        };
+        expect(assertTypes).toBeDefined();
     });
 });
